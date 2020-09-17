@@ -7,58 +7,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="添加"
-            tools:ignore="ButtonStyle" />
-        <Button
-            android:id="@+id/btn_add_position"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="添加到最后"
-            tools:ignore="ButtonStyle" />
-        <Button
-            android:id="@+id/btn_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="更新"
-            tools:ignore="ButtonStyle"
-            />
-        <Button
-            android:id="@+id/btn_del"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="删除"
-            tools:ignore="ButtonStyle"
-            />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/btn_del_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="全部删除"
-            tools:ignore="ButtonStyle"
-            />
-
-
-    </LinearLayout>
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/list_book"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        />
+
+    <ListView
+        android:id="@+id/list_app"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:stateListAnimator="@animator/selector_animator"
+        />
+
 
 </LinearLayout>

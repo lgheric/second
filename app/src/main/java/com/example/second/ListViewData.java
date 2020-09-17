@@ -1,12 +1,12 @@
 package com.example.second;
 
-public class Data {
+public class ListViewData {
     private int imgId;
     private String content;
 
-    public Data() {}
+    public ListViewData() {}
 
-    public Data(int imgId, String content) {
+    public ListViewData(int imgId, String content) {
         this.imgId = imgId;
         this.content = content;
     }

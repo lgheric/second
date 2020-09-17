@@ -1,92 +1,71 @@
 package com.example.second;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private ListView listview;
-    private MyAdapter mAdapter;
-    int flag=2;
+public class MainActivity extends AppCompatActivity {
+
+    //private Context mContext;
+    private ListView list_book;
+    private ListView list_app;
+
+    private MyAdapter<App> myAdapter1 = null;
+    private MyAdapter<Book> myAdapter2 = null;
+    private ArrayList<App> mData1 = null;
+    private ArrayList<Book> mData2 = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        bindViews();
-
-        LinkedList<Data> mData = new LinkedList<>();
-        mData.add(new Data(R.mipmap.ic_launcher_round,"给猪哥跪了~~~ x 1"));
-
-        mAdapter = new MyAdapter(this, mData);
-        listview.setAdapter(mAdapter);
+        //mContext = MainActivity.this;
+        init();
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn_add:
-                mAdapter.add(new Data(R.mipmap.ic_launcher_round,"给猪哥跪了~~~ x " + flag));
-                flag++;
-                break;
-            case R.id.btn_add_position:
-                int n =  mAdapter.getCount();
-                mAdapter.add(n,new Data(R.mipmap.ic_launcher,"给猪哥跪了~~~(added)"));
-                Toast.makeText(this,"n:"+n,Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn_update:
-                mAdapter.update(5,new Data(R.mipmap.ic_launcher,"给猪哥跪了~~~(edited)"),listview);
+    private void init() {
 
-                //mData.set(15, "更新的item");
-                //方式一：
-//                adapter = new MyAdapter(Main8Activity.this, list);
-//                listview.setAdapter(adapter);
-                //方式二：
-//                adapter.notifyDataSetChanged();
-                //方式三：
-                //adapter.update(15,new Data(R.id.img_icon));
-                break;
-            case R.id.btn_del:
-                    int m =  mAdapter.getCount()-1;
-                    if(m >=0){
-                        mAdapter.remove(m);
-                    }else{
-                        Toast.makeText(this,"没有了"+m,Toast.LENGTH_SHORT).show();
-                    }
+        list_book = findViewById(R.id.list_book);
+        list_app =  findViewById(R.id.list_app);
 
-                break;
-            case R.id.btn_del_all:
-                    mAdapter.removeAll();
-                break;
-        }
+        //数据初始化
+        mData1 = new ArrayList<>();
+        mData1.add(new App(R.mipmap.iv_icon_baidu,"百度"));
+        mData1.add(new App(R.mipmap.iv_icon_douban,"豆瓣"));
+        mData1.add(new App(R.mipmap.iv_icon_zhifubao,"支付宝"));
+
+        mData2 = new ArrayList<>();
+        mData2.add(new Book("《第一行代码Android》","郭霖"));
+        mData2.add(new Book("《Android群英传》","徐宜生"));
+        mData2.add(new Book("《Android开发艺术探索》","任玉刚"));
+
+        //Adapter初始化
+        myAdapter1 = new MyAdapter<App>(mData1,R.layout.item_one) {
+            @Override
+            public void bindView(ViewHolder holder, App obj) {
+                holder.setImageResource(R.id.img_icon,obj.getaIcon());
+                holder.setText(R.id.txt_aname,obj.getaName());
+            }
+        };
+        myAdapter2 = new MyAdapter<Book>(mData2,R.layout.item_two) {
+            @Override
+            public void bindView(ViewHolder holder, Book obj) {
+                holder.setText(R.id.txt_bname,obj.getbName());
+                holder.setText(R.id.txt_bauthor,obj.getbAuthor());
+            }
+        };
+
+        //ListView设置下Adapter：
+        list_book.setAdapter(myAdapter2);
+        list_app.setAdapter(myAdapter1);
+
     }
-
-
-    private void bindViews(){
-        Button btn_add = findViewById(R.id.btn_add);
-        Button btn_add_position = findViewById(R.id.btn_add_position);
-        Button btn_update = findViewById(R.id.btn_update);
-        Button btn_del = findViewById(R.id.btn_del);
-        Button btn_del_all = findViewById(R.id.btn_del_all);
-        listview = findViewById(R.id.listview);
-
-        btn_add.setOnClickListener(this);
-        btn_add_position.setOnClickListener(this);
-        btn_update.setOnClickListener(this);
-        btn_del.setOnClickListener(this);
-        btn_del_all.setOnClickListener(this);
-    }
-
-
-
 
 
 }
