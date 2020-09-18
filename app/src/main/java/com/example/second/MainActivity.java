@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spin_two.setOnItemSelectedListener(this);
 
     }
-    
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
