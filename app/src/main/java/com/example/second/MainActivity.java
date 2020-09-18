@@ -7,15 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Context mContext;
-    private ArrayList<Icon> mData = null;
+    //判断是否为刚进去时触发onItemSelected的标志
+    private boolean one_selected = false;
+    private boolean two_selected = false;
+    private ArrayList<Hero> mData = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,35 +27,56 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = MainActivity.this;
-        GridView grid_photo = findViewById(R.id.grid_photo);
-
         mData = new ArrayList<>();
-        mData.add(new Icon(R.mipmap.iv_icon_1, "图标1"));
-        mData.add(new Icon(R.mipmap.iv_icon_2, "图标2"));
-        mData.add(new Icon(R.mipmap.iv_icon_3, "图标3"));
-        mData.add(new Icon(R.mipmap.iv_icon_4, "图标4"));
-        mData.add(new Icon(R.mipmap.iv_icon_5, "图标5"));
-        mData.add(new Icon(R.mipmap.iv_icon_6, "图标6"));
-        mData.add(new Icon(R.mipmap.iv_icon_7, "图标7"));
-
-        BaseAdapter mAdapter = new MyAdapter<Icon>(mData, R.layout.item_grid_icon) {
-            @Override
-            public void bindView(ViewHolder holder, Icon obj) {
-                holder.setImageResource(R.id.img_icon, obj.getiId());
-                holder.setText(R.id.txt_icon, obj.getiName());
-            }
-        };
-
-        grid_photo.setAdapter(mAdapter);
-
-        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext, "你点击了~" + position + "~项", Toast.LENGTH_SHORT).show();
-            }
-        });
+        bindViews();
 
     }
 
+    private void bindViews() {
+        Spinner spin_one = findViewById(R.id.spin_one);
+        Spinner spin_two = findViewById(R.id.spin_two);
 
+        mData.add(new Hero(R.mipmap.iv_lol_icon1,"迅捷斥候：提莫（Teemo）"));
+        mData.add(new Hero(R.mipmap.iv_lol_icon2,"诺克萨斯之手：德莱厄斯（Darius）"));
+        mData.add(new Hero(R.mipmap.iv_lol_icon3,"无极剑圣：易（Yi）"));
+        mData.add(new Hero(R.mipmap.iv_lol_icon4,"德莱厄斯：德莱文（Draven）"));
+        mData.add(new Hero(R.mipmap.iv_lol_icon5,"德邦总管：赵信（XinZhao）"));
+        mData.add(new Hero(R.mipmap.iv_lol_icon6,"狂战士：奥拉夫（Olaf）"));
+
+        BaseAdapter myAdadpter = new MyAdapter<Hero>(mData, R.layout.item_spin_hero) {
+            @Override
+            public void bindView(ViewHolder holder, Hero obj) {
+                holder.setImageResource(R.id.img_icon, obj.gethIcon());
+                holder.setText(R.id.txt_name, obj.gethName());
+            }
+        };
+        spin_two.setAdapter(myAdadpter);
+
+        spin_one.setOnItemSelectedListener(this);
+        spin_two.setOnItemSelectedListener(this);
+
+    }
+    
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (parent.getId()){
+            case R.id.spin_one:
+                if(one_selected){
+                    Toast.makeText(mContext,"您的分段是~：" + parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                }else one_selected = true;
+                break;
+            case R.id.spin_two:
+                if(two_selected){
+                    TextView txt_name = view.findViewById(R.id.txt_name);
+                    Toast.makeText(mContext,"您选择的英雄是~：" + txt_name.getText().toString(), Toast.LENGTH_SHORT).show();
+                }else two_selected = true;
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

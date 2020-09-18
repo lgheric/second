@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">second</string>
     <string name="img_desc">..</string>
+    <string name="spin_title">spin_title</string>
 </resources>
