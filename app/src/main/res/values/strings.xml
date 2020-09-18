@@ -2,4 +2,5 @@
     <string name="app_name">second</string>
     <string name="img_desc">..</string>
     <string name="spin_title">分段选择</string>
+    <string name="default_text">请输入搜索内容</string>
 </resources>
