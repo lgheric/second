@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
-    <AutoCompleteTextView
-        android:id="@+id/atv_content"
+    <ExpandableListView
+        android:id="@+id/exlist_lol"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:completionHint="@string/default_text"
-        android:completionThreshold="1"
-        android:dropDownHorizontalOffset="5dp"
-        tools:ignore="LabelFor" />
+        android:layout_height="match_parent"
+        android:childDivider="#E02D2F"/>
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/matv_content"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:completionThreshold="1"
-        android:dropDownHorizontalOffset="5dp"
-        android:text=""
-        tools:ignore="LabelFor" />
-
-</LinearLayout>
+</RelativeLayout>
