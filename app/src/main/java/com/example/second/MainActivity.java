@@ -2,65 +2,46 @@ package com.example.second;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ViewFlipper;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context mContext;
-    private ViewFlipper vflp_help;
-    private int[] resId = {R.mipmap.ic_help_view_1,R.mipmap.ic_help_view_2, R.mipmap.ic_help_view_3,R.mipmap.ic_help_view_4};
-
-    private final static int MIN_MOVE = 200;   //最小距离
-    private GestureDetector mDetector;
-
+    private Context global_context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mContext = MainActivity.this;
-        //实例化SimpleOnGestureListener与GestureDetector对象
-        MyGestureListener mgListener = new MyGestureListener();
-        mDetector = new GestureDetector(this, mgListener);
-        vflp_help = findViewById(R.id.vflp_help);
-        //动态导入添加子View
-        for (int value : resId) {
-            vflp_help.addView(getImageView(value));
-        }
+        global_context = MainActivity.this;
+        midToast("ha ha ha",Toast.LENGTH_LONG);
     }
 
-    //重写onTouchEvent触发MyGestureListener里的方法
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return mDetector.onTouchEvent(event);
-    }
-
-    //自定义一个GestureListener,这个是View类下的，别写错哦！！！
-    private class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float v, float v1) {
-            if(e1.getX() - e2.getX() > MIN_MOVE){
-                vflp_help.setInAnimation(mContext,R.anim.right_in);
-                vflp_help.setOutAnimation(mContext, R.anim.right_out);
-                vflp_help.showNext();
-            }else if(e2.getX() - e1.getX() > MIN_MOVE){
-                vflp_help.setInAnimation(mContext,R.anim.left_in);
-                vflp_help.setOutAnimation(mContext, R.anim.left_out);
-                vflp_help.showPrevious();
-            }
-            return true;
-        }
-    }
-
-    private ImageView getImageView(int resId){
-        ImageView img = new ImageView(this);
-        img.setBackgroundResource(resId);
-        return img;
+    @SuppressWarnings("SameParameterValue")
+    void midToast(String str, int showTime)
+    {
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.view_toast_custom, (ViewGroup) findViewById(R.id.lly_toast));
+        ImageView img_logo = view.findViewById(R.id.img_logo);
+        TextView tv_msg = view.findViewById(R.id.tv_msg);
+        tv_msg.setText(str);
+        
+        Toast toast = new Toast(global_context);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+        toast.show();
     }
 }
