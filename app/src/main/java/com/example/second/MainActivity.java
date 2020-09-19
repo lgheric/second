@@ -2,7 +2,6 @@ package com.example.second;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView img_logo = view.findViewById(R.id.img_logo);
         TextView tv_msg = view.findViewById(R.id.tv_msg);
         tv_msg.setText(str);
-        
+
         Toast toast = new Toast(global_context);
         toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(showTime);
         toast.setView(view);
         toast.show();
     }
