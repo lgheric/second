@@ -1,28 +1,22 @@
 package com.example.second;
 
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private Context mContext;
-    private NotificationManager mNManager;
-    Bitmap LargeBitmap = null;
-    private static final int NOTIFYID_1 = 1;
+    private boolean[] checkItems;
 
 
     @Override
@@ -31,50 +25,108 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mContext = MainActivity.this;
-        //创建大图标的Bitmap
-        LargeBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.iv_lol_icon1);
-        mNManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         bindView();
     }
 
     private void bindView() {
-        Button btn_show_normal = findViewById(R.id.btn_show_normal);
-        Button btn_close_normal = findViewById(R.id.btn_close_normal);
-        btn_show_normal.setOnClickListener(this);
-        btn_close_normal.setOnClickListener(this);
+        Button btn_dialog_one = findViewById(R.id.btn_dialog_one);
+        Button btn_dialog_two = findViewById(R.id.btn_dialog_two);
+        Button btn_dialog_three = findViewById(R.id.btn_dialog_three);
+        Button btn_dialog_four = findViewById(R.id.btn_dialog_four);
+        btn_dialog_one.setOnClickListener(this);
+        btn_dialog_two.setOnClickListener(this);
+        btn_dialog_three.setOnClickListener(this);
+        btn_dialog_four.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_show_normal:
-                //定义一个PendingIntent点击Notification后启动一个Activity
-                Intent it = new Intent(mContext, NewsActivity.class);
-                PendingIntent pit = PendingIntent.getActivity(mContext, 0, it, 0);
-
-                //设置图片,通知标题,发送时间,提示方式等属性
-                Notification.Builder mBuilder = new Notification.Builder(this);
-                mBuilder.setContentTitle("叶良辰")                        //标题
-                        .setContentText("我有一百种方法让你呆不下去~")      //内容
-                        .setSubText("——记住我叫叶良辰")                    //内容下面的一小段文字
-                        .setTicker("收到叶良辰发送过来的信息~")             //收到信息后状态栏显示的文字信息
-                        .setWhen(System.currentTimeMillis())           //设置通知时间
-                        .setSmallIcon(R.mipmap.iv_icon_1)            //设置小图标
-                        .setLargeIcon(LargeBitmap)                     //设置大图标
-                        .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)    //设置默认的三色灯与振动器
-                        .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.biaobiao))  //设置自定义的提示音
-                        .setAutoCancel(true)                           //设置点击后取消Notification
-                        .setContentIntent(pit);                        //设置PendingIntent
-                Notification notify1 = mBuilder.build();
-                mNManager.notify(NOTIFYID_1, notify1);
+            //普通对话框
+            case R.id.btn_dialog_one:
+                AlertDialog alert = null;
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                alert = builder.setIcon(R.mipmap.ic_icon_fish)
+                        .setTitle("系统提示：")
+                        .setMessage("这是一个最普通的AlertDialog,\n带有三个按钮，分别是取消，中立和确定")
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(mContext, "你点击了取消按钮~", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(mContext, "你点击了确定按钮~", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNeutralButton("中立", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(mContext, "你点击了中立按钮~", Toast.LENGTH_SHORT).show();
+                            }
+                        }).create();             //创建AlertDialog对象
+                alert.show();                    //显示对话框
                 break;
-
-            case R.id.btn_close_normal:
-                //除了可以根据ID来取消Notification外,还可以调用cancelAll();关闭该应用产生的所有通知
-                mNManager.cancel(NOTIFYID_1);                          //取消Notification
+            //普通列表对话框
+            case R.id.btn_dialog_two:
+                final String[] lesson = new String[]{"语文", "数学", "英语", "化学", "生物", "物理", "体育"};
+                alert = null;
+                builder = new AlertDialog.Builder(mContext);
+                alert = builder.setIcon(R.mipmap.ic_icon_fish)
+                        .setTitle("选择你喜欢的课程")
+                        .setItems(lesson, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "你选择了" + lesson[which], Toast.LENGTH_SHORT).show();
+                            }
+                        }).create();
+                alert.show();
                 break;
-
+            //单选列表对话框
+            case R.id.btn_dialog_three:
+                final String[] fruits = new String[]{"苹果", "雪梨", "香蕉", "葡萄", "西瓜"};
+                alert = null;
+                builder = new AlertDialog.Builder(mContext);
+                alert = builder.setIcon(R.mipmap.ic_icon_fish)
+                        .setTitle("选择你喜欢的水果，只能选一个哦~")
+                        .setSingleChoiceItems(fruits, 0, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "你选择了" + fruits[which], Toast.LENGTH_SHORT).show();
+                            }
+                        }).create();
+                alert.show();
+                break;
+            //多选列表对话框
+            case R.id.btn_dialog_four:
+                final String[] menu = new String[]{"水煮豆腐", "萝卜牛腩", "酱油鸡", "胡椒猪肚鸡"};
+                //定义一个用来记录个列表项状态的boolean数组
+                checkItems = new boolean[]{false, false, false, false};
+                alert = null;
+                builder = new AlertDialog.Builder(mContext);
+                alert = builder.setIcon(R.mipmap.ic_icon_fish)
+                        .setMultiChoiceItems(menu, checkItems, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                                checkItems[which] = isChecked;
+                            }
+                        })
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String result = "";
+                                for (int i = 0; i < checkItems.length; i++) {
+                                    if (checkItems[i])
+                                        result += menu[i] + " ";
+                                }
+                                Toast.makeText(getApplicationContext(), "客官你点了:" + result, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .create();
+                alert.show();
+                break;
         }
     }
-
 }
