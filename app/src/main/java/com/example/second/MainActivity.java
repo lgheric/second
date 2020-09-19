@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 builder = new AlertDialog.Builder(mContext);
                 alert = builder.setIcon(R.mipmap.ic_icon_fish)
                         .setTitle("选择你喜欢的水果，只能选一个哦~")
-                        .setSingleChoiceItems(fruits, 0, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(fruits, -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getApplicationContext(), "你选择了" + fruits[which], Toast.LENGTH_SHORT).show();
@@ -116,10 +116,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String result = "";
+                                StringBuilder result = new StringBuilder();
                                 for (int i = 0; i < checkItems.length; i++) {
                                     if (checkItems[i])
-                                        result += menu[i] + " ";
+                                        result.append(menu[i]).append(" ");
                                 }
                                 Toast.makeText(getApplicationContext(), "客官你点了:" + result, Toast.LENGTH_SHORT).show();
                             }
