@@ -1,45 +1,80 @@
 package com.example.second;
 
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Context global_context;
+
+    private Context mContext;
+    private NotificationManager mNManager;
+    Bitmap LargeBitmap = null;
+    private static final int NOTIFYID_1 = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        global_context = MainActivity.this;
-        midToast("ha ha ha",Toast.LENGTH_LONG);
+        mContext = MainActivity.this;
+        //创建大图标的Bitmap
+        LargeBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.iv_lol_icon1);
+        mNManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        bindView();
     }
 
-    @SuppressWarnings("SameParameterValue")
-    void midToast(String str, int showTime)
-    {
-        LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.view_toast_custom, (ViewGroup) findViewById(R.id.lly_toast));
-        ImageView img_logo = view.findViewById(R.id.img_logo);
-        TextView tv_msg = view.findViewById(R.id.tv_msg);
-        tv_msg.setText(str);
-
-        Toast toast = new Toast(global_context);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(showTime);
-        toast.setView(view);
-        toast.show();
+    private void bindView() {
+        Button btn_show_normal = findViewById(R.id.btn_show_normal);
+        Button btn_close_normal = findViewById(R.id.btn_close_normal);
+        btn_show_normal.setOnClickListener(this);
+        btn_close_normal.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_show_normal:
+                //定义一个PendingIntent点击Notification后启动一个Activity
+                Intent it = new Intent(mContext, NewsActivity.class);
+                PendingIntent pit = PendingIntent.getActivity(mContext, 0, it, 0);
+
+                //设置图片,通知标题,发送时间,提示方式等属性
+                Notification.Builder mBuilder = new Notification.Builder(this);
+                mBuilder.setContentTitle("叶良辰")                        //标题
+                        .setContentText("我有一百种方法让你呆不下去~")      //内容
+                        .setSubText("——记住我叫叶良辰")                    //内容下面的一小段文字
+                        .setTicker("收到叶良辰发送过来的信息~")             //收到信息后状态栏显示的文字信息
+                        .setWhen(System.currentTimeMillis())           //设置通知时间
+                        .setSmallIcon(R.mipmap.iv_icon_1)            //设置小图标
+                        .setLargeIcon(LargeBitmap)                     //设置大图标
+                        .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)    //设置默认的三色灯与振动器
+                        .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.biaobiao))  //设置自定义的提示音
+                        .setAutoCancel(true)                           //设置点击后取消Notification
+                        .setContentIntent(pit);                        //设置PendingIntent
+                Notification notify1 = mBuilder.build();
+                mNManager.notify(NOTIFYID_1, notify1);
+                break;
+
+            case R.id.btn_close_normal:
+                //除了可以根据ID来取消Notification外,还可以调用cancelAll();关闭该应用产生的所有通知
+                mNManager.cancel(NOTIFYID_1);                          //取消Notification
+                break;
+
+        }
+    }
+
 }
