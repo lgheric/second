@@ -7,21 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_one"
+        android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1.普通的圆形的进度条对话框" />
+        android:text="1.日期选择对话框" />
 
     <Button
-        android:id="@+id/btn_two"
+        android:id="@+id/btn_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2.定义一个条形的进度条对话框，但不带动态更新" />
+        android:text="2.时间选择对话框" />
 
-    <Button
-        android:id="@+id/btn_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3.定义一个带进度更新的条形进度条的对话框" />
 
 </LinearLayout>
