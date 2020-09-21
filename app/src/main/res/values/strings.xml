@@ -3,4 +3,15 @@
     <string name="img_desc">..</string>
     <string name="spin_title">分段选择</string>
     <string name="default_text">请输入搜索内容</string>
+    <string name="close">Close</string>
+    <string name="sans_icon">Sans Icon</string>
+    <string name="disabled">Disabled</string>
+    <string name="_2nd_to_last">2nd-To-Last</string>
+    <string name="last">Last</string>
+    <string name="a_submenu">A submenu</string>
+    <string name="non_ghost">Non-Ghost</string>
+    <string name="ghost">Ghost</string>
+    <string name="font_blue">font_blue</string>
+    <string name="font_green">font_green</string>
+    <string name="font_red">font_red</string>
 </resources>
