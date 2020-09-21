@@ -10,15 +10,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 
-public class OneActivity extends AppCompatActivity {
+public class TwoActivity extends AppCompatActivity {
 
     @SuppressLint("InflateParams")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_one);
+        setContentView(R.layout.activity_two);
 
-        ViewPager vpager_one = (ViewPager) findViewById(R.id.vpager_one);
+        ViewPager vpager_two = (ViewPager) findViewById(R.id.vpager_two);
 
         ArrayList<View> aList = new ArrayList<>();
 
@@ -26,10 +26,16 @@ public class OneActivity extends AppCompatActivity {
 
         aList.add(li.inflate(R.layout.view_one,null,false));
         aList.add(li.inflate(R.layout.view_two,null,false));
-        aList.add(li.inflate(R.layout.view_three,null,false));
+        aList.add(li.inflate(R.layout.view_three, null, false));
 
-        MyPagerAdapter mAdapter = new MyPagerAdapter(aList);
+        ArrayList<String> sList = new ArrayList<>();
+        sList.add("橘黄");
+        sList.add("淡黄");
+        sList.add("浅棕");
 
-        vpager_one.setAdapter(mAdapter);
+        MyPagerAdapter2 mAdapter = new MyPagerAdapter2(aList, sList);
+
+        vpager_two.setAdapter(mAdapter);
     }
+
 }
