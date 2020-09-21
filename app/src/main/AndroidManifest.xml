@@ -17,9 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".NewsActivity">
+        <activity android:name=".OneActivity" />
 
-        </activity>
     </application>
 
 </manifest>

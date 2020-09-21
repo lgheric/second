@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/tv_test"
+    <Button
+        android:id="@+id/btn_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="我可以通过选项菜单来变色~"
-        android:textSize="18sp" />
-
-
-    <TextView
-        android:id="@+id/tv_context"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="长按我变色~"
-        android:textSize="18sp" />
-
+        android:text="ViewPager使用示例1" />
 
     <Button
-        android:id="@+id/btn_show_menu"
+        android:id="@+id/btn_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_context"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="显示一个PopupMenu" />
+        android:text="ViewPager使用示例2" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewPager使用示例3" />
+
+    <Button
+        android:id="@+id/btn_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewPager使用示例4" />
+
+
+</LinearLayout>
