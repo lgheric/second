@@ -7,7 +7,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tv_test;
     private TextView tv_context;
+    private Button btn_show_menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,30 @@ public class MainActivity extends AppCompatActivity {
         tv_test = (TextView) findViewById(R.id.tv_test);
         tv_context = (TextView) findViewById(R.id.tv_context);
         registerForContextMenu(tv_context);
+        btn_show_menu = (Button) findViewById(R.id.btn_show_menu);
+        btn_show_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(MainActivity.this,btn_show_menu);
+                popup.getMenuInflater().inflate(R.menu.menu_pop, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.lpig:
+                                Toast.makeText(MainActivity.this,"你点了小猪~", Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.bpig:
+                                Toast.makeText(MainActivity.this,"你点了大猪~", Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
+
     }
 
     @Override
@@ -103,8 +131,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.red:
                 tv_context.setTextColor(Color.RED);
                 break;
+
+            case R.id.one:
+                Toast.makeText(MainActivity.this,"你点击了子菜单一",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.two:
+                item.setCheckable(true);
+                Toast.makeText(MainActivity.this,"你点击了子菜单二",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.three:
+                Toast.makeText(MainActivity.this,"你点击了子菜单三",Toast.LENGTH_SHORT).show();
+                item.setCheckable(true);
+                break;
+
         }
         return true;
     }
+
 
 }
