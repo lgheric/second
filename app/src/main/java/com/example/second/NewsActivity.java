@@ -1,7 +1,7 @@
 package com.example.second;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NewsActivity extends AppCompatActivity {
     @Override
