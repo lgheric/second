@@ -46,13 +46,16 @@ public class FourActivity extends AppCompatActivity  implements View.OnClickList
         //下划线动画的相关设置：
         // 移动条图片的长度
         int bmpWidth = BitmapFactory.decodeResource(getResources(), R.mipmap.line).getWidth();// 获取图片宽度
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int screenW = dm.widthPixels;// 获取分辨率宽度
+
         offset = (screenW / 3 - bmpWidth) / 2;// 计算偏移量
         Matrix matrix = new Matrix();
         matrix.postTranslate(offset, 0);
         img_cursor.setImageMatrix(matrix);// 设置动画初始位置
+
         //移动的距离
         one = offset * 2 + bmpWidth;// 移动一页的偏移量,比如1->2,或者2->3
         two = one * 2;// 移动两页的偏移量,比如1直接跳3
@@ -60,10 +63,13 @@ public class FourActivity extends AppCompatActivity  implements View.OnClickList
 
         //往ViewPager填充View，同时设置点击事件与页面切换事件
         ArrayList<View> listViews = new ArrayList<>();
+
         LayoutInflater mInflater = getLayoutInflater();
+
         listViews.add(mInflater.inflate(R.layout.view_one, null, false));
         listViews.add(mInflater.inflate(R.layout.view_two, null, false));
         listViews.add(mInflater.inflate(R.layout.view_three, null, false));
+
         vpager_four.setAdapter(new MyPagerAdapter(listViews));
         vpager_four.setCurrentItem(0);          //设置ViewPager当前页，从0开始算
 
