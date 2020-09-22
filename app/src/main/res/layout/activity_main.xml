@@ -3,11 +3,18 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <FrameLayout
         android:id="@+id/ly_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show drawer"
+            />
+
+    </FrameLayout>
 
     <ListView
         android:id="@+id/list_left_drawer"

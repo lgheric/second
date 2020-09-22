@@ -3,6 +3,7 @@ package com.example.second;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity{
     private DrawerLayout drawer_layout;
     private ListView list_left_drawer;
     private ArrayList<Item> menuLists;
-    private MyAdapter<Item> myAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity{
         menuLists.add(new Item(R.mipmap.iv_menu_alert,"提醒通知"));
         menuLists.add(new Item(R.mipmap.iv_menu_trace,"活动路线"));
         menuLists.add(new Item(R.mipmap.iv_menu_settings,"相关设置"));
-        myAdapter = new MyAdapter<Item>(menuLists,R.layout.item_list) {
+        MyAdapter<Item> myAdapter = new MyAdapter<Item>(menuLists, R.layout.item_list) {
             @Override
             public void bindView(ViewHolder holder, Item obj) {
-                holder.setImageResource(R.id.img_icon,obj.getiId());
+                holder.setImageResource(R.id.img_icon, obj.getiId());
                 holder.setText(R.id.txt_content, obj.getiName());
             }
         };
@@ -60,6 +60,15 @@ public class MainActivity extends AppCompatActivity{
 
         });
 
+        Button btn = (Button) findViewById(R.id.btn);
+
+        btn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                drawer_layout.openDrawer(list_left_drawer);
+            }
+        });
     }
 
 
