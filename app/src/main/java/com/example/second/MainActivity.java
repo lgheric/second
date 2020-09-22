@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this, ThreeActivity.class));
                 break;
             case R.id.btn_four:
-                //startActivity(new Intent(this, FourActivity.class));
+                startActivity(new Intent(this, FourActivity.class));
                 break;
         }
 
