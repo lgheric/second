@@ -20,12 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <ImageView
-        android:id="@+id/img_test"
+    <com.example.second.DelEditText
+        android:id="@+id/edit_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="matrix"
-        android:src="@drawable/s_1"
-        android:contentDescription="@string/img_desc" />
+        android:layout_height="32dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_frame_search"
+        android:hint="带删除按钮的EditText~"
+        android:maxLength="20"
+        android:padding="5dp"
+        android:singleLine="true" />
 </RelativeLayout>
 
