@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgtouch"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@mipmap/ic_help_view_2"-->
-<!--        android:contentDescription="@string/img_desc" />-->
-<!--    <com.example.second.MyView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content" />-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity"
+android:layout_margin="5dp"
+android:orientation="horizontal">
 
-    <FrameLayout
-        android:id="@+id/fly_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<EditText
+    android:id="@+id/edit_pawd"
+    android:layout_width="0dp"
+    android:layout_weight="2"
+    android:layout_height="48dp"
+    android:inputType="textPassword"
+    android:background="@drawable/editborder"
+    android:autofillHints=""
+    tools:ignore="LabelFor" />
 
-    <com.example.second.DelEditText
-        android:id="@+id/edit_search"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_frame_search"
-        android:hint="带删除按钮的EditText~"
-        android:maxLength="20"
-        android:padding="5dp"
-        android:singleLine="true" />
-</RelativeLayout>
+<Button
+    android:id="@+id/btnChange"
+    android:layout_width="0dp"
+    android:layout_weight="1"
+    android:layout_height="48dp"
+    android:text="密码可见"/>
 
+</LinearLayout>
