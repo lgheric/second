@@ -21,4 +21,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnupdate"
         android:text="更新progressBar"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btncancel"
+        android:text="取消更新progressBar"/>
 </LinearLayout>

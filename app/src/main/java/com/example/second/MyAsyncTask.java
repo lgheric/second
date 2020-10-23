@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 public class MyAsyncTask extends AsyncTask<Integer,Integer,String>
 {
+    String TAG = "DEBUG";
+
     @SuppressLint("StaticFieldLeak")
     private TextView txt;
     @SuppressLint("StaticFieldLeak")
@@ -27,6 +29,7 @@ public class MyAsyncTask extends AsyncTask<Integer,Integer,String>
         int i = 0;
         for (i = 10;i <= 100;i+=10)
         {
+            if (isCancelled()) break;
             dop.delay();
             publishProgress(i);
         }
@@ -46,8 +49,18 @@ public class MyAsyncTask extends AsyncTask<Integer,Integer,String>
     @Override
     protected void onProgressUpdate(Integer... values) {
         int value = values[0];
-        String TAG = "DEBUG";
         Log.d(TAG, "onProgressUpdate: "+value+"\n");
         pgbar.setProgress(value);
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        Log.e(TAG, "完成了, i：" + result);
+    }
+
+
+    @Override
+    protected void  onCancelled (String result) {
+        Log.e(TAG, "取消了, i：" + result);
     }
 }
