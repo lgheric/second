@@ -2,6 +2,7 @@ package com.example.second;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -13,8 +14,7 @@ public class MyAsyncTask extends AsyncTask<Integer,Integer,String>
     private ProgressBar pgbar;
 
     public MyAsyncTask(TextView txt,ProgressBar pgbar)
-    {
-        super();
+    { super();
         this.txt = txt;
         this.pgbar = pgbar;
     }
@@ -46,6 +46,8 @@ public class MyAsyncTask extends AsyncTask<Integer,Integer,String>
     @Override
     protected void onProgressUpdate(Integer... values) {
         int value = values[0];
+        String TAG = "DEBUG";
+        Log.d(TAG, "onProgressUpdate: "+value+"\n");
         pgbar.setProgress(value);
     }
 }
