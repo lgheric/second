@@ -6,24 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+
     <TextView
-        android:id="@+id/txttitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <!--设置一个进度条,并且设置为水平方向-->
-    <ProgressBar
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pgbar"
-        style="?android:attr/progressBarStyleHorizontal"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnupdate"
-        android:text="更新progressBar"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btncancel"
-        android:text="取消更新progressBar"/>
+        android:text="请在下方屏幕中绘制手势~"
+        android:textSize="20sp"/>
+
+
+    <!-- gestureStrokeType控制手势是否需要一笔完成,multiple表示允许多笔-->
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gesture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gestureStrokeType="multiple" />
+
 </LinearLayout>
