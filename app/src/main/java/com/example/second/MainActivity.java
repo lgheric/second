@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent("android.intent.action.MAIN");
                 intent.setClassName("com.example.second","com.example.second.NewsActivity");
                 startActivity(intent);
+                //4,直接通过包名启动apk的
+                Intent it = getPackageManager().getLaunchIntentForPackage("com.example.second.NewsActivity") ;
+                if(it != null) startActivity(intent) ;
+
             }
         });
 
