@@ -21,11 +21,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //1,最常见的启动Activity方式
                 //startActivity(new Intent(MainActivity.this,NewsActivity.class));
-                //通过Intent的ComponentName
-                ComponentName cn = new ComponentName("com.example.second","com.example.second.NewsActivity") ;
-                Intent intent = new Intent() ;
-                intent.setComponent(cn) ;
-                startActivity(intent) ;
+                //2,通过Intent的ComponentName
+                //ComponentName cn = new ComponentName("com.example.second","com.example.second.NewsActivity") ;
+                //Intent intent = new Intent() ;
+                //intent.setComponent(cn) ;
+                //startActivity(intent) ;
+                //3,初始化Intent时指定包名
+                Intent intent = new Intent("android.intent.action.MAIN");
+                intent.setClassName("com.example.second","com.example.second.NewsActivity");
+                startActivity(intent);
             }
         });
 

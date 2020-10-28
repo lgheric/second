@@ -11,7 +11,7 @@
     android:id="@+id/btn"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="通过ComponentName打开指定的Activity"
+    android:text="初始化Intent时指定包名"
     />
 
 
