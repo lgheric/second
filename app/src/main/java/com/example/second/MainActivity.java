@@ -1,5 +1,6 @@
 package com.example.second;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,13 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,NewsActivity.class));
+                //1,最常见的启动Activity方式
+                //startActivity(new Intent(MainActivity.this,NewsActivity.class));
+                //通过Intent的ComponentName
+                ComponentName cn = new ComponentName("com.example.second","com.example.second.NewsActivity") ;
+                Intent intent = new Intent() ;
+                intent.setComponent(cn) ;
+                startActivity(intent) ;
             }
         });
 
