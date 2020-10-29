@@ -41,12 +41,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //0.1 reg_activity
+
+        //0.1 Activity间的数据传递 一次传递多个
         Button reg_activity = findViewById(R.id.reg_activity);
         reg_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,NewsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //0.2 多个Activity间的交互(后一个传回给前一个)
+        Button multiple_activity = findViewById(R.id.multiple_activity);
+        multiple_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MultiActivity.class);
                 startActivity(intent);
             }
         });

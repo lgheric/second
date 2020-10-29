@@ -16,4 +16,6 @@
     <string name="font_red">font_red</string>
     <string name="reg">Register</string>
     <string name="ror">The result of register</string>
+    <string name="select_icon">select icon</string>
+    <string name="icon_list">The icon list</string>
 </resources>

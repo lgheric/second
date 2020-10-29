@@ -27,6 +27,13 @@
             />
 
         <Button
+            android:id="@+id/multiple_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="多个Activity间的交互(后一个传回给前一个)"
+            />
+
+        <Button
             android:id="@+id/tel_10086"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
