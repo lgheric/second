@@ -16,7 +16,14 @@
             android:id="@+id/sdcard_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="打开新的Activity"
+            android:text="打开SDCARD Activity"
+            />
+
+        <Button
+            android:id="@+id/reg_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打开reg Activity"
             />
 
         <Button

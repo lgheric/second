@@ -41,6 +41,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //0.1 reg_activity
+        Button reg_activity = findViewById(R.id.reg_activity);
+        reg_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,NewsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //1.给移动客服10086拨打电话   成功
         Button btn = findViewById(R.id.tel_10086);

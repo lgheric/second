@@ -14,4 +14,6 @@
     <string name="font_blue">font_blue</string>
     <string name="font_green">font_green</string>
     <string name="font_red">font_red</string>
+    <string name="reg">Register</string>
+    <string name="ror">The result of register</string>
 </resources>
