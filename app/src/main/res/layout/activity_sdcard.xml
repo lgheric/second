@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SdCardActivity">
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+<Button
+    android:id="@+id/button_in"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="内置SDCARDp写入数据"
+    />
+
+<Button
+    android:id="@+id/button_out"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="外置SDCARDp写入数据"
+    />
+
+
+    <Button
+        android:id="@+id/bt_check_mount_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="检查SDCard挂载状态"/>
+
+    <Button
+        android:id="@+id/bt_output_sdcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="写入到Sdcard文件"
+        />
+
+    <Button
+        android:id="@+id/bt_input_sdcard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取Sdcard文件"
+        />
+
+</LinearLayout>
