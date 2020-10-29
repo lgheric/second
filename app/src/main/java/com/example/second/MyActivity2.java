@@ -9,9 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MyActivity2 extends AppCompatActivity {
+public class MyActivity2 extends BaseActivity {
 
     public int[] imgs = new int[]
             {

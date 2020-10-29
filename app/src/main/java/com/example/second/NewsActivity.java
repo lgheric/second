@@ -8,9 +8,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends BaseActivity {
 
     private EditText editname;
     private RadioGroup rad;

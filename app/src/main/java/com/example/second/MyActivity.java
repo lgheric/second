@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Objects;
 
-public class MyActivity extends AppCompatActivity {
+public class MyActivity extends BaseActivity {
 
     @SuppressLint("SetTextI18n")
     @Override

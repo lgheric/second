@@ -1,6 +1,5 @@
 package com.example.second;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -29,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class SdCardActivity extends AppCompatActivity {
+public class SdCardActivity extends BaseActivity {
 
         public static String TAG = "SdCardCheck";
         public TextView mTv;

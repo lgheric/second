@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 
-public class OneActivity extends AppCompatActivity {
+public class OneActivity extends BaseActivity {
 
     @SuppressLint("InflateParams")
     @Override

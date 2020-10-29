@@ -1,7 +1,6 @@
 package com.example.second;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,12 +15,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private Intent intent_e;
     private static final int ACTIVITY_GET_CAMERA_IMAGE=1;

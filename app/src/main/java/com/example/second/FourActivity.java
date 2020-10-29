@@ -12,12 +12,11 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 
-public class FourActivity extends AppCompatActivity  implements View.OnClickListener,ViewPager.OnPageChangeListener{
+public class FourActivity extends BaseActivity  implements View.OnClickListener,ViewPager.OnPageChangeListener{
 
     private ViewPager vpager_four;
     private ImageView img_cursor;
