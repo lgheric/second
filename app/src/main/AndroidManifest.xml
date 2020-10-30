@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsActivity"  android:label="@string/reg"/>
+        <activity android:name=".NewsActivity"  android:label="@string/reg" android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"/>
         <activity android:name=".SdCardActivity"/>
         <activity android:name=".MyActivity" android:label="@string/ror"/>
         <activity android:name=".MultiActivity" android:label="@string/select_icon"/>
