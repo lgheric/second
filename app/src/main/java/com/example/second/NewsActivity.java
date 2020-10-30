@@ -3,6 +3,7 @@ package com.example.second;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,6 +19,8 @@ public class NewsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        //设置文字:
+        setTitle(R.string.icon_list);  //XML代码中设置:android:label="@string/activity_dialog"
 
         Button btnregister = findViewById(R.id.btnregister);
         editname = findViewById(R.id.editname);
