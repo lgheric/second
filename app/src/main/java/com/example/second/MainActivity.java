@@ -26,9 +26,17 @@ public class MainActivity extends BaseActivity {
     public static String TAG = "SdCardCheck";
 
     @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);//把当前activity添加到集合中统一管理
+    }
+    
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActivityCollector.addActivity(this);//把当前activity添加到集合中统一管理
 
         //0.sdcard_activity
         Button sdcard_activity = findViewById(R.id.sdcard_activity);
