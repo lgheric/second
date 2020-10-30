@@ -14,20 +14,28 @@
         >
 
         <Button
-            android:id="@+id/btnstart"
+            android:id="@+id/btnbind"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="启动服务"
+            android:text="锁定Service"
             android:layout_weight="1"
-            />
+            tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/btnstop"
+            android:id="@+id/btncancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="停止服务"
+            android:text="解除锁定"
             android:layout_weight="1"
-            />
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取Service状态"
+            android:layout_weight="1"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
