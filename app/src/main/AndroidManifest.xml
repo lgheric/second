@@ -28,7 +28,12 @@
         <activity android:name=".MyActivity" android:label="@string/ror"/>
         <activity android:name=".MultiActivity" android:label="@string/select_icon"/>
         <activity android:name=".MyActivity2" android:label="@string/icon_list"/>
-
+        <!-- 配置Service组件,同时配置一个action -->
+        <service android:name=".service.TestService1" android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.second.service.TEST_SERVICE1"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

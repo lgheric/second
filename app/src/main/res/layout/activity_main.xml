@@ -10,193 +10,23 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         >
+
         <Button
-            android:id="@+id/sdcard_activity"
+            android:id="@+id/btnstart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="打开SDCARD Activity"
+            android:text="启动服务"
+            android:layout_weight="1"
             />
 
         <Button
-            android:id="@+id/reg_activity"
+            android:id="@+id/btnstop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="打开reg Activity"
-            />
-
-        <Button
-            android:id="@+id/multiple_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="多个Activity间的交互(后一个传回给前一个)"
-            />
-
-        <Button
-            android:id="@+id/tel_10086"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="给移动客服10086拨打电话"
-            />
-
-        <Button
-            android:id="@+id/sendsms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送短信"
-            />
-
-        <Button
-            android:id="@+id/sendsms2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送彩信（相当于发送带附件的短信）"
-            />
-
-        <Button
-            android:id="@+id/action_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="打开浏览器"
-            />
-
-        <Button
-            android:id="@+id/mailto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送电子邮件"
-            />
-
-        <Button
-            android:id="@+id/mailto2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="给someone发邮件发送内容为“Hello”的邮件"
-            />
-
-        <Button
-            android:id="@+id/mailto3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="给多人发邮件"
-            />
-
-        <Button
-            android:id="@+id/gotomap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="显示地图"
-            />
-
-        <Button
-            android:id="@+id/path_planning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="路径规划"
-            />
-
-        <Button
-            android:id="@+id/playmedia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="多媒体播放"
-            />
-
-        <Button
-            android:id="@+id/playmedia2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="获取SD卡下所有音频文件,然后播放第一首"
-            />
-
-        <Button
-            android:id="@+id/capture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="打开拍照程序"
-            />
-
-        <Button
-            android:id="@+id/capture2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="取出刚刚拍的照片"
-            />
-
-        <ImageView
-            android:id="@+id/pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Button
-            android:id="@+id/capture3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="调用系统相机应用程序，并存储拍下来的照片"
-            />
-
-        <Button
-            android:id="@+id/chopimg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10.获取并剪切图片"
-            />
-
-        <Button
-            android:id="@+id/chopimg2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10.1 剪切特定图片"
-            />
-
-        <Button
-            android:id="@+id/google_market"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="11.打开Google Market "
-            />
-
-        <Button
-            android:id="@+id/go_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12.进入手机设置界面:"
-            />
-
-        <Button
-            android:id="@+id/setup_apk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="13.安装apk"
-            />
-
-        <Button
-            android:id="@+id/uninstall_apk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="14.卸载apk:"
-            />
-
-        <Button
-            android:id="@+id/send_attach"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15.发送附件:"
-            />
-
-        <Button
-            android:id="@+id/go_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="16.进入联系人页面:"
-            />
-
-        <Button
-            android:id="@+id/view_somebody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="17.查看指定联系人:"
+            android:text="停止服务"
+            android:layout_weight="1"
             />
 
     </LinearLayout>
