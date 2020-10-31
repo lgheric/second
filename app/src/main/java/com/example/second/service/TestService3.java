@@ -1,9 +1,14 @@
 package com.example.second.service;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.example.second.MainActivity;
+import com.example.second.R;
 
 import java.util.Objects;
 
@@ -50,6 +55,24 @@ public class TestService3 extends IntentService {
     public void onCreate() {
         Log.i(TAG,"onCreate");
         super.onCreate();
+
+        //一个简单前台服务的实现（一般服务都是后台,但可能会被系统杀死，一个前台服务会好一点点）
+        Notification localBuilder = new Notification.Builder(this)
+        .setContentIntent(PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0))
+        .setAutoCancel(false)
+        .setSmallIcon(R.mipmap.ic_icon_fish)
+        .setTicker("Foreground Service Start")
+        .setContentTitle("Socket服务端")
+        .setContentText("正在运行...")
+        .build();;
+        startForeground(1, localBuilder);
+
+//        Notification noti = new Notification.Builder(mContext)
+//                .setContentTitle("New mail from " + sender.toString())
+//                .setContentText(subject)
+//                .setSmallIcon(R.drawable.new_mail)
+//                .setLargeIcon(aBitmap)
+//                .build();
     }
 
     @Override
