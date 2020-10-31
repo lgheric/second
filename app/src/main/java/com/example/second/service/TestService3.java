@@ -12,7 +12,7 @@ public class TestService3 extends IntentService {
     //必须实现父类的构造方法
     public TestService3()
     {
-        super("service.TestService3");
+        super("TestService3");
     }
 
     //必须重写的核心方法
