@@ -45,7 +45,7 @@
                 <action android:name="com.example.second.service.TEST_SERVICE3"/>
             </intent-filter>
         </service>
-        <receiver android:name=".MyBRReceiver">
+        <receiver android:name=".BootCompleteReceiver">
             <intent-filter>
                 <action android:name = "android.intent.cation.BOOT_COMPLETED" />
             </intent-filter>
