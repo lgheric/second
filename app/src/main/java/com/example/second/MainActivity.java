@@ -1,31 +1,60 @@
 package com.example.second;
 
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.example.second.broadcast.MyBcReceiver;
 
 public class MainActivity extends BaseActivity {
 
-    MyBRReceiver myReceiver;
+    private MyBcReceiver localReceiver;
+    private LocalBroadcastManager localBroadcastManager;
+    private IntentFilter intentFilter;
 
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        ActivityCollector.removeActivity(this);//把当前activity添加到集合中统一管理
-        unregisterReceiver(myReceiver);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
-        ActivityCollector.addActivity(this);//把当前activity添加到集合中统一管理
+        //初始化广播接收者，设置过滤器
+        localReceiver = new MyBcReceiver();
+        intentFilter = new IntentFilter();
+        intentFilter.addAction("com.example.second.mybcreceiver.LOGIN_OTHER");
+        localBroadcastManager.registerReceiver(localReceiver, intentFilter);
 
-        //核心部分代码：
-        myReceiver = new MyBRReceiver();
-        IntentFilter itFilter = new IntentFilter();
-        itFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        registerReceiver(myReceiver, itFilter);
+        Button btn_send = findViewById(R.id.btn_send);
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        Intent intent = new Intent("com.example.second.mybcreceiver.LOGIN_OTHER");
+                        localBroadcastManager.sendBroadcast(intent);
+            }
+        });
+
+        Button btn_login = findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        localBroadcastManager.unregisterReceiver(localReceiver);
     }
 
 }

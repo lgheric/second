@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+
+<EditText
+    android:id="@+id/edit_user"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:autofillHints="请用输入用户名"
+    android:hint="请用输入用户名"
+    android:inputType="text"
+    tools:ignore="LabelFor" />
+
+<EditText
+    android:id="@+id/edit_pawd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:autofillHints="请用输入密码"
+    android:hint="请用输入密码"
+    android:inputType="text"
+    tools:ignore="LabelFor" />
+
+<Button
+    android:id="@+id/btn_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/login_btn"
+    />
+
+</LinearLayout>

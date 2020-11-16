@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -29,6 +30,7 @@
         <activity android:name=".MyActivity" android:label="@string/ror"/>
         <activity android:name=".MultiActivity" android:label="@string/select_icon"/>
         <activity android:name=".MyActivity2" android:label="@string/icon_list"/>
+        <activity android:name=".LoginActivity" android:label="@string/login_page"/>
         <!-- 配置Service组件,同时配置一个action -->
         <service android:name=".service.TestService1" android:exported="false">
             <intent-filter>

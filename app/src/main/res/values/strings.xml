@@ -18,4 +18,6 @@
     <string name="ror">The result of register</string>
     <string name="select_icon">select icon</string>
     <string name="icon_list">The icon list</string>
+    <string name="login_page">Login</string>
+    <string name="login_btn">Click to Login</string>
 </resources>

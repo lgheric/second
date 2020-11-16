@@ -10,32 +10,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
 
-        <Button
-            android:id="@+id/btnbind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="锁定Service"
-            android:layout_weight="1"
-            tools:ignore="ButtonStyle" />
 
         <Button
-            android:id="@+id/btncancel"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="解除锁定"
-            android:layout_weight="1"
-            tools:ignore="ButtonStyle" />
+            android:text="模拟在另一终端登录"
+
+            />
 
         <Button
-            android:id="@+id/btnstatus"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="获取Service状态"
-            android:layout_weight="1"
-            tools:ignore="ButtonStyle" />
+            android:text="打开登录页"
+
+            />
 
     </LinearLayout>
 
