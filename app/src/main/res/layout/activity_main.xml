@@ -7,56 +7,5 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-
-        <Button
-            android:id="@+id/btn_sms_read"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="读短信"
-
-            />
-
-        <Button
-            android:id="@+id/btn_sms_write"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="写短信"
-
-            />
-
-        <Button
-            android:id="@+id/btn_contact_read"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="读联系人"
-
-            />
-
-        <Button
-            android:id="@+id/btn_special_contact_read"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="查询指定电话的联系人信息"
-
-            />
-
-        <Button
-            android:id="@+id/btn_contact_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="添加一个联系人"
-
-            />
-
-    </LinearLayout>
-
-
-
 
 </ScrollView>
