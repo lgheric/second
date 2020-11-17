@@ -7,5 +7,25 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开Picker UI"
+            />
+
+        <ImageView
+            android:id="@+id/img_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/img_desc" />
+    </LinearLayout>
+
 
 </ScrollView>
