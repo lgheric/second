@@ -26,7 +26,7 @@ public class ContentFragment extends Fragment {
         //给布局设背景
         view.setBackgroundColor(getResources().getColor(bgColor));
         //拿到文本控件
-        TextView tv_content = (TextView) view.findViewById(R.id.tv_content);
+        TextView tv_content = view.findViewById(R.id.txt_content);
         //给布局中的文本控件设置内容
         tv_content.setText(strContent);
         return view;

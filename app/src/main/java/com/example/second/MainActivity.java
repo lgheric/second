@@ -1,118 +1,117 @@
 package com.example.second;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.provider.OpenableColumns;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.Window;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
-    private static final int READ_REQUEST_CODE = 42;
+    //UI Object
+    private TextView txt_topbar;
+    private TextView txt_channel;
+    private TextView txt_message;
+    private TextView txt_better;
+    private TextView txt_setting;
+    private FrameLayout ly_content;
+
+    //Fragment Object
+    private MyFragment fg1,fg2,fg3,fg4;
+    private FragmentManager fManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        Button btn_show = (Button) findViewById(R.id.btn_show);
-        btn_show.setOnClickListener(this);
-
+        fManager = getSupportFragmentManager();
+        bindViews();
+        txt_channel.performClick();   //模拟一次点击，既进去后选择第一项
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    //UI组件初始化与事件绑定
+    private void bindViews() {
+        txt_topbar = findViewById(R.id.txt_topbar);
+        txt_channel = findViewById(R.id.txt_channel);
+        txt_message = findViewById(R.id.txt_message);
+        txt_better = findViewById(R.id.txt_better);
+        txt_setting = findViewById(R.id.txt_setting);
+        ly_content = findViewById(R.id.ly_content);
+
+        txt_channel.setOnClickListener(this);
+        txt_message.setOnClickListener(this);
+        txt_better.setOnClickListener(this);
+        txt_setting.setOnClickListener(this);
     }
+
+    //重置所有文本的选中状态
+    private void setSelected(){
+        txt_channel.setSelected(false);
+        txt_message.setSelected(false);
+        txt_better.setSelected(false);
+        txt_setting.setSelected(false);
+    }
+
+    //隐藏所有Fragment
+    private void hideAllFragment(FragmentTransaction fragmentTransaction){
+        if(fg1 != null)fragmentTransaction.hide(fg1);
+        if(fg2 != null)fragmentTransaction.hide(fg2);
+        if(fg3 != null)fragmentTransaction.hide(fg3);
+        if(fg4 != null)fragmentTransaction.hide(fg4);
+    }
+
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("image/*");
-        startActivityForResult(intent, READ_REQUEST_CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            Uri uri;
-            if (data != null) {
-                uri = data.getData();
-                assert uri != null;
-                Log.e("HeHe", "Uri: " + uri.toString());
-                dumpImageMetaData(uri);
-                try {
-                    Bitmap selBitmap = getBitmapFromUri(uri);
-                    ImageView img_show = (ImageView) findViewById(R.id.img_show);
-                    img_show.setImageBitmap(selBitmap);
-                } catch (IOException e) {
-                    e.printStackTrace();
+        FragmentTransaction fTransaction = fManager.beginTransaction();
+        hideAllFragment(fTransaction);
+        switch (v.getId()){
+            case R.id.txt_channel:
+                setSelected();
+                txt_channel.setSelected(true);
+                if(fg1 == null){
+                    fg1 = new MyFragment("第一个Fragment");
+                    fTransaction.add(R.id.ly_content,fg1);
+                }else{
+                    fTransaction.show(fg1);
                 }
-            }
-        }
-    }
-
-    //根据uri获取文件参数
-    public void dumpImageMetaData(Uri uri) {
-        Cursor cursor = getContentResolver()
-                .query(uri, null, null, null, null, null);
-        try {
-            if (cursor != null && cursor.moveToFirst()) {
-                String displayName = cursor.getString(
-                        cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                Log.e("HeHe", "Display Name: " + displayName);
-                int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
-                String size = null;
-                if (!cursor.isNull(sizeIndex)) {
-                    size = cursor.getString(sizeIndex);
-                }else {
-                    size = "Unknown";
+                break;
+            case R.id.txt_message:
+                setSelected();
+                txt_message.setSelected(true);
+                if(fg2 == null){
+                    fg2 = new MyFragment("第二个Fragment");
+                    fTransaction.add(R.id.ly_content,fg2);
+                }else{
+                    fTransaction.show(fg2);
                 }
-                Log.e("HeHe", "Size: " + size);
-            }
-        }finally {
-            assert cursor != null;
-            cursor.close();
+                break;
+            case R.id.txt_better:
+                setSelected();
+                txt_better.setSelected(true);
+                if(fg3 == null){
+                    fg3 = new MyFragment("第三个Fragment");
+                    fTransaction.add(R.id.ly_content,fg3);
+                }else{
+                    fTransaction.show(fg3);
+                }
+                break;
+            case R.id.txt_setting:
+                setSelected();
+                txt_setting.setSelected(true);
+                if(fg4 == null){
+                    fg4 = new MyFragment("第四个Fragment");
+                    fTransaction.add(R.id.ly_content,fg4);
+                }else{
+                    fTransaction.show(fg4);
+                }
+                break;
         }
-    }
-
-    //根据Uri获得Bitmap
-    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
-        ParcelFileDescriptor parcelFileDescriptor =
-                getContentResolver().openFileDescriptor(uri, "r");
-        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-        parcelFileDescriptor.close();
-        return image;
-    }
-
-    //根据Uri获取输入流 TODO: 未关闭输入流,还有，parcelFileDecriptor是什么鬼？
-    private String readTextFromUri(Uri uri) throws IOException {
-        InputStream inputStream = getContentResolver().openInputStream(uri);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder stringBuilder = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            stringBuilder.append(line);
-        }
-        //fileInputStream.close();
-        //parcelFileDescriptor.close();
-        return stringBuilder.toString();
+        fTransaction.commit();
     }
 }
